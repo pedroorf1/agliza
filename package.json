@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/pedroorf1/agliza#readme",
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "dotenv": "^16.0.0",
+>>>>>>> release/1.0.2
     "express": "^4.17.3"
   }
 }
