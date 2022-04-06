@@ -5,7 +5,12 @@ const ClientModel = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-          },
+    },
+
+    birthday: {
+      type: Date,
+      required: false,
+    },
 
     email: {
       type: String,
@@ -24,37 +29,37 @@ const ClientModel = new mongoose.Schema(
 
     cpf_cnpj: {
       type: String,
-      required: true,
+      required: false,
     },
 
     zip_code: {
       type: Number,
-      required: true,
+      required: false,
     },
 
     number: {
       type: Number,
-      required: true,
+      required: false,
     },
 
     street: {
       type: String,
-      required: true,
+      required: false,
     },
 
     city: {
       type: String,
-      required: true,
+      required: false,
     },
 
     state: {
       type: String,
-      required: true,
+      required: false,
     },
 
     district: {
       type: String,
-      required: true,
+      required: false,
     },
 
     complement: {
