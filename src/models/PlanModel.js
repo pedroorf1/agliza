@@ -49,13 +49,18 @@ const PlanModel = new mongoose.Schema(
         },
 
         description: {
-            type: Text,
+            type: String,
             required:false
         },
 
         //complemento do plano plus (plus + procedimentos)
         pprocedure: {
             type: Boolean,
+            required: true
+        },
+
+        ppproceduredescription: {
+            type: String,
             required: false
         },
 
@@ -67,7 +72,7 @@ const PlanModel = new mongoose.Schema(
 
         accesslevel: {
             type: Number,
-            required: true
+            required: false
         },
         
     },

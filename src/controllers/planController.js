@@ -1,26 +1,99 @@
+const planModel = require("../models/PlanModel");
+
+let plan = {};
+
 module.exports = class planController {
-    
-    static async simular(req, res) {
-        res.status(200).send({message: "Simulado Plano"})
+  static async create(req, res) {
+    const {
+      name,
+      appointmenter,
+      appointmenterValue,
+      appointmentmedical,
+      appointmentmedicalValue,
+      therapy,
+      therapyValue,
+      monthlypayment,
+      category,
+      description,
+      pprocedure,
+      ppproceduredescription,
+      pprocedurevalue,
+    } = req.body;
+
+    if (
+      !name ||
+      !appointmenter ||
+      !appointmenterValue ||
+      !appointmentmedical ||
+      !appointmentmedicalValue ||
+      !therapy ||
+      !therapyValue ||
+      !monthlypayment ||
+      !category ||
+      !description
+    ) {
+      res
+        .status(400)
+        .send({ message: "Complete todos os campos obrigatórios!" });
+      return;
     }
 
-    static async create(req, res) {
-        res.status(200).send({message: "Plano Criado"})
+    plan = {
+      name,
+      appointmenter,
+      appointmenterValue,
+      appointmentmedical,
+      appointmentmedicalValue,
+      therapy,
+      therapyValue,
+      monthlypayment,
+      category,
+      description,
+    };
+    if (pprocedure && !pprocedurevalue && !ppproceduredescription) {
+      res
+        .status(400)
+        .send({ message: "Complete a descrição e valor do procedimento!" });
+      return;
+    }
+    if (pprocedure) {
+      plan = { ...plan, pprocedure, ppproceduredescription, pprocedurevalue };
     }
 
-    static async update(req, res) {
-        res.status(200).send({message: "Plano atualizado"})
+    try {
+      const addPlan = await planModel.create(plan);
+      res.status(200).send({ message: "Plano Criado", plano: addPlan });
+      return;
+    } catch (err) {
+      console.info(err);
+      return;
     }
 
-    static async delete(req, res) {
-        res.status(200).send({message: "Plano excluído"})
-    }
+    res.status(200).send({ message: "Plano Criado" });
+    return;
+  }
 
-    static async aprouved(req, res) {
-        res.status(200).send({message: "Plano Aprovado"})
-    }
+  static async update(req, res) {
+    res.status(200).send({ message: "Plano atualizado" });
+    return;
+  }
 
-    static async signed(req, res) {
-        res.status(200).send({message: "Plano assinado"})
-    }
-}
+  static async delete(req, res) {
+    res.status(200).send({ message: "Plano excluído" });
+    return;
+  }
+
+  static async simular(req, res) {
+    res.status(200).send({ message: "Simulado Plano" });
+    return;
+  }
+  static async aprouved(req, res) {
+    res.status(200).send({ message: "Plano Aprovado" });
+    return;
+  }
+
+  static async signed(req, res) {
+    res.status(200).send({ message: "Plano assinado" });
+    return;
+  }
+};
