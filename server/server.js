@@ -9,12 +9,15 @@ server.use(cors())
 const homeRouter = require('../src/routers/homeRouter')
 const clientRouter = require('../src/routers/clientRouter')
 const planRouter = require('../src/routers/planRouter')
-const userRouter = require('../src/routers/userRouter')
+const userRouter = require('../src/admin/userRouter')
+const proposalRouter = require('../src/routers/proposalRouter')
+
 
 server.use(homeRouter)
 server.use("/client", clientRouter)
 server.use("/plan", planRouter)
 server.use("/admin", userRouter)
+server.use("/client", proposalRouter)
 
 
 

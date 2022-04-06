@@ -63,6 +63,10 @@ module.exports = class userController {
     const userExists = await userModel.findOne({email});
     if(userExists){
       const validatePassword = await tools.validatePassword(password, userExists.password);
+      if(!validatePassword){
+        res.status(403).send({ message: "Dados inválidos!"});
+        return
+      }
       const token = await auth.generateToken(userExists._id, userExists.email, userExists.name)
       req.headers["x-access-token"] = token
       req.userId = userExists._id;
