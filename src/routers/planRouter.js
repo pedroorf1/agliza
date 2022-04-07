@@ -8,6 +8,7 @@ router.put('/update', planController.update )
 router.delete('/delete', planController.delete )
 router.put('/aprouved', planController.aprouved )
 router.put('/signed', planController.signed )
+router.get('/', planController.list )
 
 
 module.exports = router

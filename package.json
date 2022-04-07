@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/pedroorf1/agliza#readme",
   "dependencies": {
+    "api": "^4.3.0",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
