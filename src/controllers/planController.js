@@ -1,4 +1,5 @@
 const planModel = require("../models/PlanModel");
+const plans = require("../helpers/plans");
 
 let plan = {};
 
@@ -70,6 +71,13 @@ module.exports = class planController {
     }
 
     res.status(200).send({ message: "Plano Criado" });
+    return;
+  }
+
+  static async list(req, res) {
+    const listOfPlans = await plans.getPlan();
+    console.info("Nossa lista de planos",  listOfPlans);
+    res.status(200).send({ message: "Lista de Planos", plans: listOfPlans });
     return;
   }
 
