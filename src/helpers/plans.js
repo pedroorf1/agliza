@@ -1,10 +1,28 @@
 const sdk = require("api")("@iugu-dev/v1.0#somtdtlql1fa3opt");
+const axios = require('axios')
 
 module.exports = class plans {
-  static async getPlan() {
+  static async getPlans() {
     sdk.auth(process.env.TOKEN_IUGU);
     const lista = await sdk["listar-plano"]();
     console.info(lista);
     return lista;
   }
+
+  static async getPlan(id) {
+    try {
+      const plan = await axios.get(`https://api.iugu.com/v1/plans/${id}?api_token=${process.env.TOKEN_IUGU}`) 
+      console.info(plan.data)
+      return plan.data ;
+    }
+    catch(err){
+      console.info(err)
+      return
+    }
+    
+  }
+
+
+
+
 };
