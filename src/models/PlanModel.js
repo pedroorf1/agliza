@@ -74,6 +74,18 @@ const PlanModel = new mongoose.Schema(
             type: Number,
             required: false
         },
+
+        iuguId: {
+            type: String,
+            required: true
+        },
+
+        active: {
+            type: Boolean,
+            required: false
+        },
+
+
         
     },
 
