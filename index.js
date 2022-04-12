@@ -4,7 +4,8 @@ require("dotenv").config()
 const server = require('./server/server')
 
 app.use(server)
+const PORT = process.env.PORT || 4500
 
-app.listen(process.env.PORT, () => {
-    console.log("Started")
+app.listen(PORT, () => {
+    console.log(`Started on http://localhost:${PORT}`)
 })

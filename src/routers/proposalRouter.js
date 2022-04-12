@@ -1,7 +1,6 @@
-const router = require('express').Router()
-const proposalController = require('../controllers/proposalController')
+const router = require("express").Router();
+const proposalController = require("../controllers/proposalController");
 
-router.post('/proposta', proposalController.propostalCreate)
+router.post("/proposta", proposalController.propostalCreate);
 
-
-module.exports = router
+module.exports = router;

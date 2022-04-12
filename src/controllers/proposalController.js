@@ -12,14 +12,12 @@ module.exports = class proposalController {
         .send({ message: "Complete todos os campos obrigatórios!" });
       return;
     }
-
     // Email verification
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!email.match(regexEmail)) {
       res.status(403).send({ message: "Email inválido!" });
       return;
     }
-
     proposal = {
       name,
       email,
@@ -31,7 +29,7 @@ module.exports = class proposalController {
     proposal = { ...proposal };
     try {
       const addProposal = await proposalModel.create(proposal);
-      res.status(200).send({ message: "Cliente Adicionado na proposta", Proposta: proposal });
+      res.status(200).send({ message: "Cliente Adicionado na proposta", Proposta: addProposal });
       return;
     } catch (err) {
       console.info(err);

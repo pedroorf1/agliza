@@ -2,7 +2,6 @@ const planModel = require("../models/PlanModel");
 const plans = require("../helpers/plans");
 
 let plan = {};
-
 module.exports = class planController {
   static async create(req, res) {
     const {
@@ -62,14 +61,11 @@ module.exports = class planController {
     }
 
     const planId = req.params.id;
-    if(planId){
-      console.log(planId)
-      res.status(200).send(planId)
-      return 
+    if (planId) {
+      console.log(planId);
+      res.status(200).send(planId);
+      return;
     }
-
-    return
-
     // try {
     //   const addPlan = await planModel.create(plan);
     //   res.status(200).send({ message: "Plano Criado", plano: addPlan });
@@ -78,28 +74,27 @@ module.exports = class planController {
     //   console.info(err);
     //   return;
     // }
-
     res.status(200).send({ message: "Plano Criado" });
     return;
   }
 
   static async information(req, res) {
-    const planId = req.params.id
-    const plan = await plans.getPlan(planId)
+    const planId = req.params.id;
+    const plan = await plans.getPlan(planId);
     // const data = plan[0].data
     res.status(200).send({ message: "Plano Iugu", plan });
-    console.info(plan)
+    console.info(plan);
     return;
   }
 
   static async list(req, res) {
     const listOfPlans = await plans.getPlans();
-    console.info("Nossa lista de planos",  listOfPlans);
+    console.info("Nossa lista de planos", listOfPlans);
     res.status(200).send({ message: "Lista de Planos", plans: listOfPlans });
     return;
   }
 
-   static async delete(req, res) {
+  static async delete(req, res) {
     res.status(200).send({ message: "Plano excluído" });
     return;
   }
