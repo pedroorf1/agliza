@@ -13,8 +13,8 @@ module.exports = class userController {
       res.status(403).send({ message: "Dados inválidos!" });
       return;
     }
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (!email.match(regexEmail)) {
+    // eslint-disable-next-line no-useless-escape
+    if (!tools.testeEmail(email)) {
       res.status(403).send({ message: "Email inválido!" });
       return;
     }
@@ -47,8 +47,7 @@ module.exports = class userController {
       return;
     }
 
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (!email.match(regexEmail)) {
+    if (!tools.testeEmail(email)) {
       res.status(403).send({ message: "Email inválido!" });
       return;
     }

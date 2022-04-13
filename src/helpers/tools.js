@@ -10,5 +10,17 @@ module.exports = class tools {
     const validate = await bcrypt.compare(password, hash);
     return validate;
   }
+
+  static async testeEmail(email) {
+    // eslint-disable-next-line no-useless-escape
+    let testeEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return email.match(testeEmail)
+  }
+
+  static async testeCpfCnpj(cpfcnpj) {
+    // eslint-disable-next-line no-useless-escape
+    let regexCnp = /(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)/;
+    return cpfcnpj.match(regexCnp)
+  }
 };
 

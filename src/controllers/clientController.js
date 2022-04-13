@@ -1,4 +1,5 @@
 const clientModel = require("../models/ClientModel");
+const tools = require("../helpers/tools")
 let client = {};
 module.exports = class clientController {
   static async clientCreate(req, res) {
@@ -37,16 +38,12 @@ module.exports = class clientController {
       return;
     }
     // Email verification
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (!email.match(regexEmail)) {
+    if (!tools.testeEmail(email)) {
       res.status(403).send({ message: "Email inválido!" });
       return;
     }
     // CPF and CNPJ verification
-    let regexCnp =
-      /(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)/;
-
-    if (!cpf_cnpj.match(regexCnp)) {
+    if (!tools.testeCpfCnpj(cpf_cnpj)) {
       res.status(403).send({ message: "CPF ou CNPJ inválido!" });
       return;
     }

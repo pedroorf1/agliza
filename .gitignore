@@ -3,6 +3,5 @@ node_modules
 tabelaPlanos.js
 *.txt
 .env
-.eslin*
-.edit*
 Proc*
+__HELPERS

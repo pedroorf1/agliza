@@ -10,4 +10,3 @@ try {
   console.info(err);
 }
 module.exports = mongoose;
-
